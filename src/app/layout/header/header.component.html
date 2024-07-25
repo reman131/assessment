@@ -1,0 +1,50 @@
+<div class="w-100 toolbar-outer layout-padding mx-0 position-sticky z-3 header-bg shadow">
+    <div class="d-flex justify-content-between align-items-center header-inner py-1 py-lg-2 px-3">
+        <div class="d-flex align-items-center justify-content-start">
+
+            <a routerLink="/" class="py-2 my-1 my-lg-0 py-lg-0 mx-2 mx-lg-0">
+                <img class="header-logo" src="assets/images/logo/angular-red.png" alt="logo" loading="lazy">
+            </a>
+
+            <button class="w-0 h-0 mb-n5 mr-n2" #searchMenuTrigger="matMenuTrigger" mat-icon-button [matMenuTriggerFor]="searchUsersMenu"></button>
+            <mat-form-field class="search-form mx-3">
+                <!-- <mat-icon matPrefix class="material-symbols-outlined"> search </mat-icon> -->
+                <input matInput placeholder="Search" [formControl]="searchUserForm" (focus)="searchMenuTrigger.openMenu()">
+                <mat-icon matSuffix class="material-symbols-outlined"> search </mat-icon>
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-icon-button (click)="toggleMode()">
+                <mat-icon [matTooltip]="isDark()?'Dark Mode':'Light Mode'">{{isDark()?'dark_mode':'light_mode'}}</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="position-relative overflow-visible">
+    <mat-progress-bar class="position-absolute top-0 z-5 left-0 right-0" *ngIf="loadingBarObservable | async" mode="indeterminate"></mat-progress-bar>
+</div>
+
+
+<mat-menu #searchUsersMenu="matMenu" yPosition="below" class="max-w-20rem w-20rem">
+    <div class="panel-outer" *ngIf="searchUsersObservable | async as usersList; else noItemsTemp">
+        <a *ngFor="let user of usersList" mat-menu-item [routerLink]="['/user-details',user.id]" class="d-flex align-items-center gap-2">
+            <img [src]="user.avatar" loading="lazy" class="rounded-avatar">
+            <div>
+                <h6 class="mb-n1 w-75 text-truncate"><mat-icon class="fs-5 mx-2"> person </mat-icon>{{user.first_name}} {{user.last_name}}</h6>
+                <h6 class="mb-0 w-75 text-truncate"><mat-icon class="fs-5 mx-2"> mail </mat-icon>{{user.email}}</h6>
+            </div>
+        </a>
+    </div>
+    <ng-template #noItemsTemp>
+        <div class="text-center py-5">
+            <ng-container *ngIf="!loadingUser">
+                <mat-icon class="fs-3 mb-3">{{searchUserForm.value?'sentiment_dissatisfied':'keyboard'}}</mat-icon>
+                <h5>{{searchUserForm.value?'No user found':'Type to search'}}</h5>
+            </ng-container>
+            <ng-container *ngIf="loadingUser">
+                <div class="spinner-grow p-4 bg-primary"></div>
+            </ng-container>
+        </div>
+    </ng-template>
+</mat-menu>

@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+// ---------------------------- Imports ----------------------------
+/** ^^^^^^^^^^^^^^^ IMPORT THIS FILE ONCE TO AVOID STYLES DUPLICATION ^^^^^^^^^^^^^^^*/
+@import "./assets/styles/theme/setup";
+@import "./assets/styles/general/styles";
+
+/* **************** Customize bootstrap breakpoints **************** */
+$enable-negative-margins: true;
+/* import what we need to override */
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+/* set the overriding variables */
+$grid-breakpoints: (
+    xxs:0,
+    xs: 320px,
+    sm: 568px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1440px,
+    x3l: 1680px,
+    x4l: 1920px
+);
+$container-max-widths: (
+    xxs:0,
+    xs: 320px,
+    sm: 568px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1440px,
+    x3l: 1680px,
+    x4l: 1920px
+);
+
+/* override the !default vars with the values we set above */
+@import "node_modules/bootstrap/scss/bootstrap";
+/* **************** End customize bootstrap breakpoints **************** */
+
+// ------------------------------- *********** -----------------------------------
+
+body {
+    --light-glow-color: #{mat-color($dark-accent)};
+}
+
+// --------------------------------- Mode setup ---------------------------------
+
+// --- LIGHT ---
+@include surface-bg($light-primary);
+
+.header-bg {
+    background-color: $primary-color-lightest;
+}
+
+
+// --- DARK ---
+.dark-theme {
+    @include surface-bg($dark-primary);
+
+    .header-bg {
+        background-color: $primary-color-light;
+    }
+}
+
+// --------------------------------- ************ ---------------------------------
+
+a {
+    text-decoration: none;
+    color: unset;
+}

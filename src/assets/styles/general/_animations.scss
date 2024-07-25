@@ -1,0 +1,91 @@
+.bg-img-loading {
+    background: linear-gradient(130deg, #6f8297, #fafafa, #8a9eb8);
+    background-size: 200% 200% !important;
+
+    -webkit-animation: imageLoadAnimation 5s ease infinite !important;
+    -moz-animation: imageLoadAnimation 5s ease infinite !important;
+    animation: imageLoadAnimation 5s ease infinite !important;
+}
+
+@keyframes imageLoadAnimation {
+    0% {
+        background-position: 10% 0%;
+    }
+
+    50% {
+        background-position: 91% 100%;
+    }
+
+    100% {
+        background-position: 10% 0%;
+    }
+}
+
+// -----------------------------------------
+.fade-in-down {
+    animation: fadeInDown 0.5s linear;
+
+    @keyframes fadeInDown {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+            transition: transform .12s cubic-bezier(0, 0, 0.2, 1), opacity .12s cubic-bezier(0, 0, 0.2, 1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+}
+
+// ---------------------------------
+.fade-in-right {
+    animation: fadeInRight 0.5s linear;
+
+    @keyframes fadeInRight {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform .12s cubic-bezier(0, 0, 0.2, 1), opacity .12s cubic-bezier(0, 0, 0.2, 1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+}
+
+// ---------------------------------
+.fade-in-left {
+    animation: fadeInLeft 0.5s linear;
+
+    @keyframes fadeInLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: transform .12s cubic-bezier(0, 0, 0.2, 1), opacity .12s cubic-bezier(0, 0, 0.2, 1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+}
+
+// ---------------------------------
+.fade-out {
+    animation: fadeOut 0.15s linear;
+
+    @keyframes fadeOut {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+}

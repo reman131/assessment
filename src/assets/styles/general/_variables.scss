@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+// Colors
+$primary-color: mat-color($light-primary, 500);
+$primary-color-light: mat-color($light-primary, 300);
+$primary-color-lighter: mat-color($light-primary, 100);
+$primary-color-lightest: mat-color($light-primary, 50);
+
+$light-glow-color: mat-color($light-primary, 500);

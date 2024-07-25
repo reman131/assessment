@@ -1,0 +1,15 @@
+@import '~@angular/material/theming';
+
+@mixin surface-bg($palette) {
+    @for $i from 1 through 9 {
+        .surface-#{$i}00 {
+            background-color: mat-color($palette, $i * 100);
+            color: mat-color($palette, $i + '00-contrast');
+        }
+    }
+
+    .surface-50 {
+        background-color: mat-color($palette, 50);
+        color: mat-color($palette, '50-contrast');
+    }
+}

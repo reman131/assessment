@@ -1,0 +1,42 @@
+:host {
+    display: block;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.header-logo {
+    height: auto;
+    width: 2.5rem;
+}
+
+.overflow-y-hidden {
+    overflow-y: hidden;
+}
+
+.search-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+:host .search-form ::ng-deep {
+    .mat-form-field-wrapper {
+        padding-bottom: 0;
+    }
+
+    .mat-form-field-underline {
+        bottom: .25em;
+    }
+}
+
+.rounded-avatar {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.panel-outer {
+    min-height: 10rem;
+}
