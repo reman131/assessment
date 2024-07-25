@@ -1,0 +1,30 @@
+<section class="shadow m-4 rounded-3 position-relative">
+    <div>
+        <h3 class="my-0 p-4 text-center">
+            <mat-icon class="mx-1" color="primary"> person </mat-icon>
+            User Details
+        </h3>
+    </div>
+    <a routerLink="/" class="px-3 back-btn-outer">
+        <button mat-mini-fab matTooltip="back"><mat-icon class="material-symbols-outlined" color="primary"> arrow_back </mat-icon></button>
+    </a>
+</section>
+
+
+<div class="row mx-4" *ngIf="userInfoObservable | async as userInfo">
+    <div class="col-12 col-md-6 shadow fade-in-left">
+        <h4 class="my-3  text-center">
+            <mat-icon class="mx-1"> person </mat-icon>
+            {{userInfo.first_name}} {{userInfo.last_name}}
+        </h4>
+    </div>
+    <div class="col-12 col-md-6 shadow fade-in-right">
+        <h4 class="my-3 text-center">
+            <mat-icon class="mx-1"> mail </mat-icon>
+            {{userInfo.email}}
+        </h4>
+    </div>
+    <div class="col-12 fade-in-down">
+        <app-cube-image [imageUrl]="userInfo.avatar"></app-cube-image>
+    </div>
+</div>

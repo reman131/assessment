@@ -1,0 +1,20 @@
+<section class="shadow m-4 rounded-3">
+    <h3 class="my-0 p-4 text-center">
+        <mat-icon class="material-symbols-outlined mx-1" color="primary"> group </mat-icon>
+        Users list
+    </h3>
+</section>
+<section class="mt-5">
+    <div class="d-flex gap-3 flex-wrap justify-content-center-align-items-center px-4 fade-out">
+        <a [routerLink]="['user-details',userInfo.id]"
+           *ngFor="let userInfo of usersObservable | async"
+           class="col fade-in-right">
+            <app-user-card [userInfo]="userInfo"></app-user-card>
+        </a>
+    </div>
+
+    <div>
+        <mat-paginator [pageIndex]="page" [pageSize]="pageSize" [length]="totalCount" aria-label="Select page" (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+</section>

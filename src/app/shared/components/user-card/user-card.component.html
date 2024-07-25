@@ -1,0 +1,48 @@
+<div class="card-holder d-flex flex-column w-100 h-100  rounded-3" *ngIf="userInfo">
+  <div class="upper-layer h-50">
+    <div class="inner-layer left-padding surface-50 shadow  h-100 w-100">
+      <h5 class="mb-2 mt-auto mx-auto px-3">
+        <mat-icon class="material-symbols-outlined mx-1"> person </mat-icon>
+        {{userInfo.first_name}} {{userInfo.last_name}}
+      </h5>
+    </div>
+  </div>
+  <div class="intermediate-layer position-relative h-0">
+    <div class="intermediate-text d-flex align-items-center justify-content-center h-0 text-white fs-5 opacity-0 left-padding">More Details >>></div>
+    <div class="intermediate-glow"></div>
+    <div class="image-outer mx-3">
+      <div class="cube h-100 w-100" id="cubeId">
+        <div class="rotating-cube" [ngStyle]="{'transform':'rotateY('+ rotateYDeg +'deg) rotateX(' + rotateXDeg + 'deg)'}">
+          <div class="side front">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+          <div class="side back">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+          <div class="side right">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+          <div class="side left">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+          <div class="side top">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+          <div class="side bottom">
+            <div class="inner-side" [ngStyle]="{'transform':'scale('+ dimantionChange+ '%)'}"></div>
+          </div>
+        </div>
+        <div class="image-background"></div>
+        <img [src]="userInfo.avatar" imageLoading class="h-100 w-100 mat-elevation-z9" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="lower-layer h-50 shadow ">
+    <div class="inner-layer left-padding shadow h-100 w-100 mat-app-background">
+      <h5 class="mt-2 mx-auto px-3">
+        <mat-icon class="material-symbols-outlined mx-1 vertical-top"> mail </mat-icon>
+        {{userInfo.email}}
+      </h5>
+    </div>
+  </div>
+</div>

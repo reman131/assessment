@@ -1,0 +1,162 @@
+$avatar-image-radius: 8rem;
+$light-glow-color: var(--light-glow-color);
+
+:host {
+    height: 10rem;
+    width: 100%;
+
+    &:hover {
+        .inner-side {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+
+        .upper-layer {
+            transform: rotate3d(1, 0, 0, 20deg);
+        }
+
+        .lower-layer {
+            transform: rotate3d(1, 0, 0, -20deg);
+        }
+
+        .image-background,
+        .intermediate-text,
+        .intermediate-glow {
+            opacity: 1 !important;
+        }
+    }
+}
+
+.vertical-top {
+    vertical-align: top;
+}
+
+.left-padding {
+    padding-left: calc(#{$avatar-image-radius} + 1rem);
+}
+
+.card-holder {
+    background-color: $light-glow-color !important;
+}
+
+.intermediate-layer {
+    position: absolute;
+    z-index: 99;
+    height: 0;
+    overflow: visible;
+
+    .intermediate-glow {
+        opacity: 0;
+        transition: opacity 1s ease;
+        height: 8px;
+        margin-top: -4px;
+        box-shadow: 0 0 35px $light-glow-color, 0 0 50px $light-glow-color, 0 0 55px $light-glow-color, 0 0 100px $light-glow-color;
+    }
+
+
+    .image-outer {
+        position: absolute;
+        width: $avatar-image-radius;
+        height: $avatar-image-radius;
+        top: calc(-#{$avatar-image-radius} / 2);
+        left: 0;
+
+        .image-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            transform: scaleX(102%) scaleY(104%);
+            outline: 4px solid $light-glow-color;
+            box-shadow: 0 0 4px $light-glow-color, 0 0 7px $light-glow-color, 0 0 9px $light-glow-color, 0 0 12px $light-glow-color;
+        }
+
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+}
+
+.upper-layer,
+.lower-layer {
+    transition: transform .5s ease;
+
+    .inner-layer {
+        display: flex;
+        transform: translateZ(2rem);
+    }
+
+
+    transform-style: preserve-3d;
+
+    &.upper-layer {
+        transform-origin: top;
+    }
+
+    &.lower-layer {
+        transform-origin: bottom;
+    }
+}
+
+
+/* ---------------- Cube ------------------- */
+.cube {
+    transform-style: preserve-3d;
+}
+
+.rotating-cube {
+    transform-style: preserve-3d;
+    transition: 6s linear;
+    transition-property: transform;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.side {
+    position: absolute;
+    width: $avatar-image-radius;
+    height: $avatar-image-radius;
+}
+
+.inner-side {
+    background: rgba(10, 10, 220, 0.24);
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: linear;
+    transition-property: transform, width, height, opacity;
+    transition-duration: 3s, 0.45s, 0.45s, 0.75s;
+    border-radius: 1rem;
+}
+
+.front {
+    transform: translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+.bottom {
+    transform: rotateX(-90deg) translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+.back {
+    transform: rotateY(-180deg) translateZ(calc(#{$avatar-image-radius} / 2));
+}
+
+/* ---------------- end cube ------------------- */
