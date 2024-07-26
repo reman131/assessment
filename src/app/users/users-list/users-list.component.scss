@@ -4,7 +4,15 @@
   display: block;
 }
 
+.cards-container {
+  min-height: 50vh;
+}
+
 app-user-card {
   display: block;
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.min-w-25 {
+  min-width: 25rem;
 }
