@@ -18,7 +18,7 @@ export class UserCardComponent {
   @Input() userInfo!: UserInfoModel;
 
   constructor(private cdr: ChangeDetectorRef) {
-    this.rotataionSubscription = timer(.6, 6000).subscribe(res => {
+    this.rotataionSubscription = timer(600, 6000).subscribe(res => {
       this.rotateXDeg += Math.floor(Math.sign((Math.random() - 0.5 - this.rotateXDeg / 3600)) * 90);
       this.rotateYDeg += Math.floor(Math.sign((Math.random() - 0.5 - this.rotateXDeg / 3600)) * 90);
       this.dimantionChange = Math.floor(30 + Math.random() * 50);
