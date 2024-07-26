@@ -35,7 +35,6 @@ export class HeaderComponent {
     )
   }
 
-
   toggleMode(): void {
     this.themeService.toggleMode();
     this.cdr.markForCheck();

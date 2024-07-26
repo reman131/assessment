@@ -39,6 +39,9 @@ export class UsersListComponent {
         this.pageSize = res.per_page;
       }),
       map(res => res.data)
+      // No need to mark for check here
+      // because the async pipe will t-
+      // ake care of it.
     );
   }
 
